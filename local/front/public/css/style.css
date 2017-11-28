@@ -1,0 +1,65 @@
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url(../fonts/glyphicons/glyphicons-halflings-regular.eot);
+  src: url(../fonts/glyphicons/glyphicons-halflings-regular.woff2), url(../fonts/glyphicons/glyphicons-halflings-regular.woff), url(../fonts/glyphicons/glyphicons-halflings-regular.svg), url(../fonts/glyphicons/glyphicons-halflings-regular.ttf);
+}
+.b-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0 20px;
+}
+.b-header__wrapper {
+  box-shadow: 0px 8px 11px -6px rgba(181, 179, 179, 0.75);
+  background-color: #f4f4f4;
+}
+.b-header-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.b-header-menu__element {
+  margin-right: 10px;
+  transition: .3s;
+}
+.b-header-menu__element:last-child {
+  margin-right: 0px;
+}
+.b-header-search {
+  display: flex;
+  align-items: center;
+}
+.b-header-search__icon {
+  margin-right: 10px;
+}
+.b-header-search__input {
+  min-width: 260px;
+}
+.b-calendar-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+.b-calendar-header__date {
+  font-size: 24px;
+  padding: 0 5px;
+}
+.b-calendar-header__button:last-child {
+  margin-left: 10px;
+}
+.b-calendar__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.b-calendar-item {
+  width: 14%;
+  border: 1px solid #ebebeb;
+}

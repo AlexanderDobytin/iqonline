@@ -1,0 +1,38 @@
+@import 'mixins';
+
+@font-face {
+    font-family:'Glyphicons Halflings' ;
+    src: url(../fonts/glyphicons/glyphicons-halflings-regular.eot);
+    src: url(../fonts/glyphicons/glyphicons-halflings-regular.woff2),url(../fonts/glyphicons/glyphicons-halflings-regular.woff),url(../fonts/glyphicons/glyphicons-halflings-regular.svg),url(../fonts/glyphicons/glyphicons-halflings-regular.ttf)
+}
+
+.b-header{
+
+    &{.flex-between;padding: 50px 0 20px; }
+    &__wrapper{box-shadow: 0px 8px 11px -6px rgba(181, 179, 179, 0.75);;background-color: #f4f4f4;}
+}
+.b-header-menu{
+    &{.flex-between;align-items: center}
+    &__element{margin-right: 10px;transition: .3s;}
+    &__element:last-child{margin-right: 0px;}
+}
+.b-header-search{
+    &{display: flex;align-items: center;}
+    &__icon{margin-right: 10px;}
+    &__input{min-width: 260px;}
+}
+
+.b-calendar-header{
+    &__date{
+        font-size: 24px;padding: 0 5px;
+    }
+    &__button:last-child{margin-left: 10px;}
+    &{display: flex;align-items: center;padding: 10px 0;}
+}
+.b-calendar{
+    &__list{display: flex;flex-wrap: wrap;}
+}
+.b-calendar-item{
+
+    &{width: 14%;border: 1px solid #ebebeb}   
+}

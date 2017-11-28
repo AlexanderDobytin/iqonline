@@ -1,0 +1,20 @@
+section.b-calendar
+	.b-calendar-header
+		.b-calendar-header__button.glyphicon.glyphicon-chevron-left.btn.btn-xs.btn-default
+		h4.b-calendar-header__date(data-type="monthName").i-calendar__monthName Март 2013
+		.b-calendar-header__button.glyphicon.glyphicon-chevron-right.btn.btn-xs.btn-default
+		a(href="").b-calendar-header__current.btn.btn-xs.btn-default.b-calendar-header__button Сегодня
+	.b-calendar__list
+		mixin calendarItem(day,number,title,subtitle)
+			.b-calendar-item
+				.b-calendar-item__header
+					if day
+						.b-calendar-item__weekday #{day} ,
+					.b-calendar__day=number
+					if title
+						.b-calendar-item__title=title
+					if subtitle
+						.b-calendar-item__subtitle=subtitle
+		+calendarItem('понедельник','25','title','subtitle')
+		+calendarItem('','26','title','subtitle')
+		+calendarItem('','27','','')
