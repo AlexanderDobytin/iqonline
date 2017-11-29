@@ -27,14 +27,29 @@ class Calendar {
         let weekday = this.translateDay(dayNumber);
         let firstDayCounter=0
         let firstDayDate =new Date(year,month,1);
+        
         let firstDay = firstDayDate.getDay()
-        this.itemTemplate(weekday,day,'title','ubtitle')
-        while(firstDay>firstDayCounter){
-            let currentWeekday = this.translateDay(firstDayDate.getDay()+firstDayCounter);
-            callendar+= this.itemTemplate(currentWeekday,firstDayDate.getDate()+firstDayCounter,'','')
+        console.log(this.translateDay(firstDay))
+        let lastMonth = firstDayDate;
+        lastMonth.setDate(0);
+        let lastday = lastMonth.getDate();
+        
+        while(firstDay>=firstDayCounter){
+           
+           
+
+           let currentDay = lastday+firstDayCounter-firstDay;
+           lastMonth.setDate(currentDay)
+            console.log(lastMonth)
+            
+           // let lastWeekday = this.translateDay(lastday;)
+            
+            
+            
+            callendar+= this.itemTemplate(this.translateDay(lastMonth.getDay()),currentDay,'','');
             firstDayCounter++;
         }
-        callendar+=this.itemTemplate(weekday,day,'','')
+        
         $('.b-calendar__list').html(callendar)
         this.itemHeight();
     }
