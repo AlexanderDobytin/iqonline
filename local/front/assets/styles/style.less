@@ -30,9 +30,12 @@
     &{display: flex;align-items: center;padding: 10px 0;}
 }
 .b-calendar{
-    &__list{display: flex;flex-wrap: wrap;}
+    &__list{display: flex;flex-wrap: wrap;margin-bottom: 60px;}
 }
 .b-calendar-item{
 
-    &{width: 14%;border: 1px solid #ebebeb}   
+    &{width: 14%;border: 1px solid #ebebeb;transition: box-shadow .3s;} 
+    &:hover{box-shadow: inset 0px 0px 6px 3px rgba(83, 83, 83, 0.15);}  
+    &--active{background-color: #ddd}
+    &__header{display: flex;align-items: center;justify-content: space-between;padding: 5px 10px}
 }

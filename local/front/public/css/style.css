@@ -58,8 +58,22 @@
 .b-calendar__list {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 60px;
 }
 .b-calendar-item {
   width: 14%;
   border: 1px solid #ebebeb;
+  transition: box-shadow 0.3s;
+}
+.b-calendar-item:hover {
+  box-shadow: inset 0px 0px 6px 3px rgba(83, 83, 83, 0.15);
+}
+.b-calendar-item--active {
+  background-color: #ddd;
+}
+.b-calendar-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
 }
