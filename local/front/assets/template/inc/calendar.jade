@@ -11,10 +11,23 @@ section.b-calendar
 					if day
 						.b-calendar-item__weekday #{day} ,
 					.b-calendar__day=number
-					if title
-						.b-calendar-item__title=title
-					if subtitle
-						.b-calendar-item__subtitle=subtitle
+					.b-calendar__textblock
+						if title
+							.b-calendar-item__title=title
+						if subtitle
+							.b-calendar-item__subtitle=subtitle
 		+calendarItem('понедельник','25','title','subtitle')
 		+calendarItem('','26','title','subtitle')
 		+calendarItem('','27','','')
+	.b-tooltip__container
+		.b-tooltip#tltp
+			form.b-tooltip__form
+				h4 Новое событие
+				.b-tooltip__line
+					input(type="text" name="title" placeholder="Событие").b-tooltip__input.form-control
+				.b-tooltip__line
+					input(type="text" name="subtitle" placeholder="Имена участников").b-tooltip__input.form-control
+				.b-tooltip__line
+					textarea(placeholder="Описание" name="text" row="3").b-tooltip__textarea.form-control
+				.b-tooltip__line
+					input(type="submit" value="Добавить").btn.btn-success

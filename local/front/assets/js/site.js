@@ -1,7 +1,23 @@
+let bigData = {
+
+    x1x10x2017: {
+        title: 'Hello',
+        subtitle:"World",
+        text:"i fuck you"
+    },
+    x5x10x2017: {
+        title: 'let',
+        subtitle:"is",
+        text:"snow"
+    }
+}
+
+
 class Calendar {
     constructor(){
         this.itemHeight();
-        
+      
+        this.initAddForm();
         $('.b-calendar-header__button__next').on('click',()=>{
             this.nextMonth();
         })
@@ -9,6 +25,79 @@ class Calendar {
             this.prevMonth();
         })
         this.start();
+    }
+    addNewData(item){
+        
+    }
+    initAddForm(){
+        let self = this;
+        let bigData =  localStorage.getItem("calendar")
+        bigData !== undefined ? bigData = JSON.stringify(bigData):'';
+        $(document).on('submit','.b-tooltip__form',function(event){
+            event.preventDefault();
+            let formdate = $(this).serializeArray();
+            let dataContainer={};
+            let dataType={};
+            formdate.forEach((item,index)=>{
+                dataContainer[item.name] = item.value
+            })
+            dataType[dataContainer.id]={
+                title:dataContainer.title,
+                subtitle:dataContainer.subtitle,
+                text:dataContainer.text
+            }
+            
+            console.log(bigData)    
+            console.log(dataType)    
+            self.setData(dataType);
+            
+
+            
+            
+        })
+    }
+    initTooltip(){
+        let self = this
+        $('.b-calendar-item').tooltipster({
+            trigger: 'click',
+            animation: 'fade',
+            theme: 'tooltipster-light',
+            delay: 200,
+            side:'right',
+            contentAsHTML:true,
+            interactive:true,
+            functionBefore: function(instance, helper) {
+
+                instance.content(self.getAddForm(instance,helper));
+            }
+        });
+    }
+    getAddForm(instance,helper){
+        
+        let request = `<form  class="b-tooltip__form">
+        <h4>Новое событие</h4>
+        <input type="hidden" name="id" value="`+$(helper.origin).data('id')+`">
+        <div class="b-tooltip__line">
+          <input type="text" name="title" placeholder="Событие" class="b-tooltip__input form-control">
+        </div>
+        <div class="b-tooltip__line">
+          <input type="text" name="subtitle" placeholder="Имена участников" class="b-tooltip__input form-control">
+        </div>
+        <div class="b-tooltip__line">
+          <textarea placeholder="Описание" name="text" row="3" class="b-tooltip__textarea form-control"></textarea>
+        </div>
+        
+        <div class="b-tooltip__line">
+        <input type="submit" value="Добавить" class="btn btn-success">
+      </div>
+      </form>`;
+      return request;
+        
+    }
+    setData(data){
+       // localStorage.setItem('calendar',JSON.stringify(bigData));
+        localStorage.setItem('calendar',JSON.stringify(data));
+      
     }
     itemHeight(){
         $('.b-calendar-item').css({'height':$('.b-calendar-item').width()})
@@ -25,15 +114,17 @@ class Calendar {
         this.getData().then((data)=>this.insertData(data),(error)=>this.getItems(error));
     }
     insertData(data){
-        console.log(data);
+        this.bigData = data;
+        this.getItems()
     }
     setMenuDate(month,year){
     $('.i-calendar__monthName').text(this.translateMonth(month)+' '+year);
     }
     nextMonth(){
-        
+      
         this.today.setMonth(this.today.getMonth()+1);
         this.today == this.absoluteToday? this.today.setDate(this.absoluteToday.getDate()):this.today.setDate(1)
+      
         this.start()
     }
     prevMonth(){
@@ -49,36 +140,35 @@ class Calendar {
         this.absoluteToday  = new Date();
         let today;
         if(this.today == undefined){today = new Date(); this.today = today} else {today = this.today;}
-      
         let day = today.getDate();
-        let month = today.getMonth();
-        let dayNumber = today.getDay()
-        let year = today.getFullYear();
-        let weekday = this.translateDay(dayNumber);
-        this.setMenuDate(month,year);
+        let weekday = this.translateDay(today.getDay());
+        this.setMenuDate(today.getMonth(),today.getFullYear());
         let firstDayCounter=1
-        let firstDayDate =new Date(year,month,1);
+        let firstDayDate =new Date(today.getFullYear(),today.getMonth(),1);
         let firstDay = firstDayDate.getDay()
         firstDay = firstDay-1
         let lastMonth = firstDayDate;
+
         lastMonth.setDate(0);
-        
         let lastday = lastMonth.getDate();
     
         while(firstDay>=firstDayCounter){
            let currentDay = lastday+firstDayCounter-firstDay;
            lastMonth.setDate(currentDay)    
-           this.calendarString+= this.itemTemplate(this.translateDay(lastMonth.getDay()),lastMonth.getDate(),'','','');
-            firstDayCounter++;
+           
+           
+           this.calendarString+= this.itemTemplate(lastMonth);
+           firstDayCounter++;
+
         }
         let allCellsCounter = 35;
         while(allCellsCounter >=  firstDayCounter){
-            let isCurrent='';
+            
             lastMonth.setDate(lastMonth.getDate()+1);
             
-              lastMonth.getDate() == this.absoluteToday.getDate() && lastMonth.getMonth() == this.absoluteToday.getMonth() && lastMonth.getFullYear()==this.absoluteToday.getFullYear() ?  isCurrent = true:  isCurrent = false
+           
        
-            this.calendarString+= this.itemTemplate(this.translateDay(lastMonth.getDay()),lastMonth.getDate(),'','',isCurrent);
+            this.calendarString+= this.itemTemplate(lastMonth);
             firstDayCounter++
         }
         
@@ -88,27 +178,38 @@ class Calendar {
     renderCallendar(){ 
         $('.b-calendar__list').html( this.calendarString)
         this.itemHeight();
+        this.initTooltip()
        
     }
-    itemTemplate(weekday,day,title,subtitle,isCurrent){
-        
-            weekday ==undefined || this.renderCounter > 7 ? weekday = '':'';
-            day ==undefined ? day = '':'';
-            title ==undefined ? title = '':'';
-            subtitle ==undefined ? subtitle = '':'';
- 
+    //getCurrentData()
+    itemTemplate(date){
+        let isCurrent,title,subtitle;
+        let currentData = {};
+            date.getDate() == this.absoluteToday.getDate() && date.getMonth() == this.absoluteToday.getMonth() && date.getFullYear()== this.absoluteToday.getFullYear() ?  isCurrent = true:  isCurrent = false;
+            let weekday = this.translateDay(date.getDay());   
+           
+            let id = 'x'+date.getDate()+'x'+date.getMonth()+'x'+date.getFullYear();
+            if(this.bigData !== undefined ){
+                    if(this.bigData[id] !== undefined){
+                     title = this.bigData[id].title;
+                     subtitle = this.bigData[id].subtitle; 
+                    }
+            }
+            
+         
+
             isCurrent ==true ? isCurrent = 'b-calendar-item--active' : isCurrent = '';
             let item = 
-            `<div class="b-calendar-item `+isCurrent+`">
-            <div class="b-calendar-item__header">
-                <div class="b-calendar-item__weekday">`+weekday+`</div>
-                 <div class="b-calendar__day">`+day+`</div> 
-                 </div>
-                <div class="b-calendar-item__title">`+title+`</div> 
-                <div class="b-calendar-item__subtitle">`+subtitle+`</div>
+            `<div data-tooltip-content="#tltp" data-id="`+id+`" class="b-calendar-item `+isCurrent+`">
+            <div class="b-calendar-item__header">`;
+                weekday ==undefined || this.renderCounter > 7 ? weekday = '':item +=`<div class="b-calendar-item__weekday">`+weekday+`</div>`;
+                item+=`<div class="b-calendar__day">`+date.getDate()+`</div></div><div class="b-calendar-item__textblock">`;
+                title !== undefined ? item += `<div class="b-calendar-item__title">`+title+`</div> `:'';
+                subtitle !== undefined ? item += `<div class="b-calendar-item__subtitle">`+subtitle+`</div> `:'';
+                item+=`</div></div>`;
             
-          </div>
-            `;
+          
+            
             this.renderCounter++
             
         return item

@@ -77,3 +77,27 @@
   justify-content: space-between;
   padding: 5px 10px;
 }
+.b-calendar-item__textblock {
+  padding: 5px 10px;
+}
+.b-calendar-item__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.b-calendar-item__subtitle {
+  font-size: 14px;
+}
+.b-tooltip__container {
+  display: none;
+}
+.b-tooltip__line {
+  margin-bottom: 10px;
+}
+.b-tooltip__input {
+  width: 256px;
+}
+.b-tooltip__textarea {
+  width: 256px;
+  resize: none;
+}

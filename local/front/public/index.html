@@ -34,22 +34,47 @@
                           <div class="b-calendar-item__header">
                             <div class="b-calendar-item__weekday">понедельник ,</div>
                             <div class="b-calendar__day">25</div>
-                            <div class="b-calendar-item__title">title</div>
-                            <div class="b-calendar-item__subtitle">subtitle</div>
+                            <div class="b-calendar__textblock">
+                              <div class="b-calendar-item__title">title</div>
+                              <div class="b-calendar-item__subtitle">subtitle</div>
+                            </div>
                           </div>
                         </div>
                         <div class="b-calendar-item">
                           <div class="b-calendar-item__header">
                             <div class="b-calendar__day">26</div>
-                            <div class="b-calendar-item__title">title</div>
-                            <div class="b-calendar-item__subtitle">subtitle</div>
+                            <div class="b-calendar__textblock">
+                              <div class="b-calendar-item__title">title</div>
+                              <div class="b-calendar-item__subtitle">subtitle</div>
+                            </div>
                           </div>
                         </div>
                         <div class="b-calendar-item">
                           <div class="b-calendar-item__header">
                             <div class="b-calendar__day">27</div>
+                            <div class="b-calendar__textblock">
+                            </div>
                           </div>
                         </div>
+          </div>
+          <div class="b-tooltip__container">
+            <div id="tltp" class="b-tooltip">
+              <form class="b-tooltip__form">
+                <h4>Новое событие</h4>
+                <div class="b-tooltip__line">
+                  <input type="text" name="title" placeholder="Событие" class="b-tooltip__input form-control">
+                </div>
+                <div class="b-tooltip__line">
+                  <input type="text" name="subtitle" placeholder="Имена участников" class="b-tooltip__input form-control">
+                </div>
+                <div class="b-tooltip__line">
+                  <textarea placeholder="Описание" name="text" row="3" class="b-tooltip__textarea form-control"></textarea>
+                </div>
+                <div class="b-tooltip__line">
+                  <input type="submit" value="Добавить" class="btn btn-success">
+                </div>
+              </form>
+            </div>
           </div>
         </section>
       </main>
