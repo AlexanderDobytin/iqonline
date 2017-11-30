@@ -1,18 +1,3 @@
-let bigData = {
-
-    x1x10x2017: {
-        title: 'Hello',
-        subtitle:"World",
-        text:"i fuck you"
-    },
-    x5x10x2017: {
-        title: 'let',
-        subtitle:"is",
-        text:"snow"
-    }
-}
-
-
 class Calendar {
     constructor(){
         this.itemHeight();
@@ -27,12 +12,27 @@ class Calendar {
         this.start();
     }
     addNewData(item){
-        
+        let self = this
+        $('.b-header-menu__element--add').tooltipster({
+            trigger: 'click',
+            animation: 'fade',
+            theme: 'tooltipster-light',
+            delay: 200,
+            side:'bottom',
+            contentAsHTML:true,
+            interactive:true,
+            functionBefore: function(instance, helper) {
+
+                instance.content(self.initFastForm(instance,helper));
+            }
+        })
+    }
+    initFastForm(instance,helper){
     }
     initAddForm(){
         let self = this;
         let bigData =  localStorage.getItem("calendar")
-        bigData !== undefined ? bigData = JSON.stringify(bigData):'';
+        bigData !== undefined ? bigData = JSON.parse(bigData):'';
         $(document).on('submit','.b-tooltip__form',function(event){
             event.preventDefault();
             let formdate = $(this).serializeArray();
@@ -46,10 +46,9 @@ class Calendar {
                 subtitle:dataContainer.subtitle,
                 text:dataContainer.text
             }
-            
-            console.log(bigData)    
-            console.log(dataType)    
-            self.setData(dataType);
+          let request  = Object.assign(bigData,dataType)
+ 
+            self.setData(request);
             
 
             
@@ -97,7 +96,7 @@ class Calendar {
     setData(data){
        // localStorage.setItem('calendar',JSON.stringify(bigData));
         localStorage.setItem('calendar',JSON.stringify(data));
-      
+      this.start()
     }
     itemHeight(){
         $('.b-calendar-item').css({'height':$('.b-calendar-item').width()})
