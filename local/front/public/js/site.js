@@ -88,7 +88,7 @@ class Calendar {
     setData(data) {
        
         localStorage.setItem('calendar', JSON.stringify(data));
-        console.log(JSON.parse(localStorage.getItem("calendar")))
+   
         this.start()
     }
     itemHeight() {

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Union</title>
+    <link rel="stylesheet" href="css/vendor/vendor.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/vendor/vendor.js"></script>
+    <script type="text/javascript" src="js/site.js"></script>
+  </head>
+  <body>
+    <header class="b-header__wrapper">
+      <div class="container">
+        <div class="b-header">
+          <div class="b-header-menu">
+            <div class="b-header-menu__element b-header-menu__element--add btn btn-primary">Добавить </div><a href="" class="b-header-menu__element btn btn-primary">Обновить </a>
+          </div>
+          <form class="b-header-search">
+            <div class="b-header-search__icon glyphicon glyphicon-search"></div>
+            <input type="search" placeholder="Событие, дата или участник" class="b-header-search__input form-control">
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <main>
+        <section class="b-calendar">
+          <div class="b-calendar-header">
+            <div class="b-calendar-header__button glyphicon glyphicon-chevron-left btn btn-xs btn-default b-calendar-header__button__prev"></div>
+            <h4 data-type="monthName" class="b-calendar-header__date i-calendar__monthName">Март 2013</h4>
+            <div class="b-calendar-header__button glyphicon glyphicon-chevron-right btn btn-xs btn-default b-calendar-header__button__next"></div><a href="" class="b-calendar-header__current btn btn-xs btn-default b-calendar-header__button">Сегодня</a>
+          </div>
+          <div class="b-calendar__list">
+                        <div class="b-calendar-item">
+                          <div class="b-calendar-item__header">
+                            <div class="b-calendar-item__weekday">понедельник ,</div>
+                            <div class="b-calendar__day">25</div>
+                            <div class="b-calendar__textblock">
+                              <div class="b-calendar-item__title">title</div>
+                              <div class="b-calendar-item__subtitle">subtitle</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="b-calendar-item">
+                          <div class="b-calendar-item__header">
+                            <div class="b-calendar__day">26</div>
+                            <div class="b-calendar__textblock">
+                              <div class="b-calendar-item__title">title</div>
+                              <div class="b-calendar-item__subtitle">subtitle</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="b-calendar-item">
+                          <div class="b-calendar-item__header">
+                            <div class="b-calendar__day">27</div>
+                            <div class="b-calendar__textblock">
+                            </div>
+                          </div>
+                        </div>
+          </div>
+          <div class="b-tooltip__container">
+            <div id="tltp" class="b-tooltip">
+              <form class="b-tooltip__form">
+                <h4>Новое событие</h4>
+                <div class="b-tooltip__line">
+                  <input type="text" name="title" placeholder="Событие" class="b-tooltip__input form-control">
+                </div>
+                <div class="b-tooltip__line">
+                  <input type="text" name="subtitle" placeholder="Имена участников" class="b-tooltip__input form-control">
+                </div>
+                <div class="b-tooltip__line">
+                  <textarea placeholder="Описание" name="text" row="3" class="b-tooltip__textarea form-control"></textarea>
+                </div>
+                <div class="b-tooltip__line">
+                  <input type="submit" value="Добавить" class="btn btn-success">
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

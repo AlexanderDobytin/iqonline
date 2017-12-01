@@ -1,0 +1,149 @@
+.flex-between {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.flex-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url(../fonts/glyphicons/glyphicons-halflings-regular.eot);
+  src: url(../fonts/glyphicons/glyphicons-halflings-regular.woff2), url(../fonts/glyphicons/glyphicons-halflings-regular.woff), url(../fonts/glyphicons/glyphicons-halflings-regular.svg), url(../fonts/glyphicons/glyphicons-halflings-regular.ttf);
+}
+body {
+  min-width: 1170px;
+}
+.b-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 50px 0 20px;
+}
+.b-header__wrapper {
+  -webkit-box-shadow: 0px 8px 11px -6px rgba(181, 179, 179, 0.75);
+  box-shadow: 0px 8px 11px -6px rgba(181, 179, 179, 0.75);
+  background-color: #f4f4f4;
+}
+.b-header-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.b-header-menu__element {
+  margin-right: 10px;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+.b-header-menu__element:last-child {
+  margin-right: 0px;
+}
+.b-header-search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.b-header-search__icon {
+  margin-right: 10px;
+}
+.b-header-search__input {
+  min-width: 260px;
+}
+.b-calendar-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 10px 0;
+}
+.b-calendar-header__date {
+  font-size: 24px;
+  padding: 0 5px;
+}
+.b-calendar-header__button:last-child {
+  margin-left: 10px;
+}
+.b-calendar__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+.b-calendar-item {
+  width: 14%;
+  border: 1px solid #ebebeb;
+  -webkit-transition: -webkit-box-shadow 0.3s;
+  transition: -webkit-box-shadow 0.3s;
+  transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
+}
+.b-calendar-item:hover {
+  -webkit-box-shadow: inset 0px 0px 6px 3px rgba(83, 83, 83, 0.15);
+  box-shadow: inset 0px 0px 6px 3px rgba(83, 83, 83, 0.15);
+}
+.b-calendar-item--active {
+  background-color: #ddd;
+}
+.b-calendar-item__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+.b-calendar-item__textblock {
+  padding: 5px 10px;
+}
+.b-calendar-item__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.b-calendar-item__subtitle {
+  font-size: 14px;
+}
+.b-tooltip__container {
+  display: none;
+}
+.b-tooltip__line {
+  margin-bottom: 10px;
+}
+.b-tooltip__input {
+  width: 256px;
+}
+.b-tooltip__textarea {
+  width: 256px;
+  resize: none;
+}
