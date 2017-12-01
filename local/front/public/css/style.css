@@ -12,6 +12,9 @@
   src: url(../fonts/glyphicons/glyphicons-halflings-regular.eot);
   src: url(../fonts/glyphicons/glyphicons-halflings-regular.woff2), url(../fonts/glyphicons/glyphicons-halflings-regular.woff), url(../fonts/glyphicons/glyphicons-halflings-regular.svg), url(../fonts/glyphicons/glyphicons-halflings-regular.ttf);
 }
+body {
+  min-width: 1170px;
+}
 .b-header {
   display: flex;
   justify-content: space-between;
